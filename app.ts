@@ -1,32 +1,58 @@
-let message: string= "Ola mundo"
-console.log(message)
+class Spacecraft {
 
-let episodio: number = 4;
-console.log("Quantos episodios" + 4)
+    /*Declarando o construtor*/
+    constructor (public propulsor: string){
 
-episodio = episodio + 1
-console.log("Episodio e" + episodio)
+    }
+    /*Declarando o metado*/
+    jumpIntoHyperspace(){
+        console.log(`Entering hyperspace with ${this.propulsor}`)
+    }
 
-let favorito
-favorito= '88-8'
-console.log("Meu favorito" + favorito)
-
-/*Declarando funções*/
-let isEnoughtToBeatMF= function(parsecs: number): boolean {
-    return parsecs < 12
 }
 
-let distance= 11
-console.log(`Is ${distance} parsecs enought to be Millenium Falcom ? ${isEnoughtToBeatMF(distance) ? 'YES' : 'NO'}`)
+/**Instaciando a Classe OBJ */
+    let ship = new Spacecraft('hyperdrive')
+    ship.jumpIntoHyperspace()/**Obj ship invoca o metado jumpIntoHyperspace */
 
-/*Função padrao do typescript*/
-let call = (name: string) => console.log(`Do you copy, ${name} ?`)
-call('R2')
+/*Declarando classe com herança Spacecraft*/
+class MillenniumFalcon extends Spacecraft implements Containership {
 
-function inc (speed:number, inc: number = 1) : number {
-    return speed + inc
+    cargoContainers: number /*declarando o atributo da classe interface*/
+    constructor(){
+        super('hyperdrive')
+        this.cargoContainers= 4/*declarando atributo interface dentro do construtor recebendo valores */
+
+    }
+
+    jumpIntoHyperspace(){
+        if(Math.random() >= 0.5){
+            super.jumpIntoHyperspace()
+
+        } else {
+            console.log('Failes the jump into hyperspace')
+        }
+    }
 }
 
-/*Os dois consoles declarados imprimira o valor igual a  6*/
-console.log(`inc (5,1) = ${inc(5,1)}`)
-console.log(`inc (5,1) = ${inc(5)}`)
+    /*Instaciando o obj da classe */
+    let falcon = new MillenniumFalcon()
+    falcon.jumpIntoHyperspace()
+
+    /*Declarando INTERFACE */
+    interface Containership {
+
+        /*Atributo*/
+        cargoContainers: number
+    }
+
+    /*Declarando a funcao*/
+    let goodForTheJob = (ship: Containership) => ship.cargoContainers > 2
+    console.log(`Is falcon good for the the job ${goodForTheJob (falcon) ? 'YES' : 'NO'} `)
+
+
+
+    
+
+
+
