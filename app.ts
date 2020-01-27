@@ -1,6 +1,10 @@
 import{Spacecraft, Containership} from './base-ships'
 import{MillenniumFalcon} from './starfighters'
 
+import * as _ from 'lodash'
+console.log(_.pad("Typescript Examples", 40, "="))
+
+
 /**Instaciando a Classe OBJ */
     let ship = new Spacecraft('hyperdrive')
     ship.jumpIntoHyperspace()/**Obj ship invoca o metado jumpIntoHyperspace */
